@@ -57,6 +57,9 @@ class Solution(object):
         generate(target, 0, [])    
         return res            
 
+# 采用背包
+
+
 if __name__ == '__main__':
     nums = [10,1,2,7,6,1,5]
     t = 8

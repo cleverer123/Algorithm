@@ -7,6 +7,10 @@
 
 ---
 
+> 动态规划两套题目整理：
+> [动态规划经典题目总结](https://blog.csdn.net/program_developer/article/details/85274825)
+> [动态规划总结与题目分类](https://blog.csdn.net/eagle_or_snail/article/details/50987044)
+
 ## 1、爬楼梯
 
  - 难度： Easy
@@ -17,13 +21,13 @@
 
  - 难度： Easy
  - 来源： ***LeetCode 198. House Robber***
- - 思路：  
+ - 思路： dp[i]表示到第i家的最优情况，dp[i] 可能有两种选择，其一，选第i家，那么此时最优情况就是dp[i-2] + nums[i]；其二，不选第i家，那么最优解就是dp[i-1]
 
-## 2、最大子段和
+## 2、最大子段和 最大连续子序列和
 
  - 难度： Easy
- - 来源： ***LeetCode 53. Maximum Subarray***
- - 思路：  
+ - 来源： ***LeetCode 53. Maximum Subarray*** 
+ - 思路： dp[i]表示以nums[i]结尾的子段的最大值。
 
 ## 3、找零钱
 
@@ -65,6 +69,11 @@
  - 来源： ***LeetCode 1092. Shortest Common Supersequence***
  - 思路： dp[i][j]用来标记公共部分的长度。dp回溯时，如果dp[i][j] == dp[i-1][j]，说明str1[i-1]和str2[j-1]两字符不相等，将str1[i-1]放入结果中，并将i指针前移；如果dp[i][j] == dp[i][j-1]，说明str1[i-1]和str2[j-1]两字符不相等，将str2[j-1]放入结果头部，并将j指针前移；否则，说明str1[i-1]和str2[j-1]两字符相等，将该字符放入结果头部，并将i，j指针前移。回溯结束时，str1或str2剩余的部分即为不同的部分，放入结果头部。
 
+## 牛客：矩形覆盖
+ - 题目描述
+    我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？
+ - 思路：同斐波那契数列。
+
 ## LeetCode 343. Integer Break
  - 思路： mem[i] = max(mem[i], j * (i-j), j * mem[i-j]) 
 
@@ -97,6 +106,14 @@
     - https://v.youku.com/v_show/id_XMzgzOTA2Mzc2OA==.html 
     - https://blog.csdn.net/program_developer/article/details/86245536
 
-## LeetCode 560. Subarray Sum Equals K
-    
 
+
+## 0-1 背包问题
+ - F(n, C) 表示将n个物品放进容器为C的背包，使得价值最大。
+ - 初始状态，放置第1个物品到容器为c的背包中，F(0,c)，当容量大于第一个物品的重量w[0]时，最大值为v[0]，否则为0（容量不足）
+ - 状态转移方程：F(i, c) = max(F(i-1, c), v[i] + F(i-1, c - w[i]))，即，是保持上一状态，还是放入当前物品能够使得价值最大。放入当前物品，需要保证容量足够，及c>=w[i]，由状态F(i-1, c-w[i])转移得到，即刨除当前物品重量的前一个容量。
+ 
+
+    
+## LeetCode 416. Partition Equal Subset Sum
+ - 思路：背包，n个物品，sum(nums)/2 容量

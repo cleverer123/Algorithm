@@ -21,3 +21,6 @@
 ## 6、最小窗口子串
  - 难度： Hard
  - 来源： ***LeetCode 76. Minimum Window Substring*** 
+
+## LeetCode 560. Subarray Sum Equals K
+ - 思路： nums[0] + ... + nums[i]=pre_sum, 对于j，nums[0] + ... + nums[j] = pre_sum - K, 那么nums[j+1]+ ... + nums[i] = K。哈希表统计前缀和的个数，哈希表中pre_sum - K的个数就是符合条件的子段和。
