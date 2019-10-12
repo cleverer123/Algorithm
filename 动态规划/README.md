@@ -27,7 +27,7 @@
 
  - 难度： Easy
  - 来源： ***LeetCode 53. Maximum Subarray*** 
- - 思路： dp[i]表示以nums[i]结尾的子段的最大值。
+ - 思路： dp[i]表示以nums[i]结尾的子段的最大值。dp[i] = max(dp[i-1] + nums[i], nums[i]) 
 
 ## 3、找零钱
 
