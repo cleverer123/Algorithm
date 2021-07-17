@@ -35,7 +35,42 @@ class Solution(object):
     
         return dp
 
+class Solution2(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if len(prices) == 1:
+            return 0
+        dp1 = self.dp1(prices)
+        dp2 = self.dp2(prices)
+        res = 0
+    
+        for i in range(len(dp1)):
+            res = max(res, dp1[i] + dp2[i])
+        
+        return res
+    
+    def dp1(self, prices):
+        dp = [0] * len(prices)
+        low = prices[0]
+        for i in range(1, len(prices)):
+            if prices[i] < low:
+                low = prices[i]
+            dp[i] = max(dp[i-1], prices[i] - low)
+        return dp
+    
+    def dp2(self, prices):
+        dp = [0] * len(prices)
+        high = prices[-1]
+        for i in range(len(prices)-1, 0, -1):
+            if prices[i-1] > high:
+                high = prices[i-1]
+            dp[i-1] = max(dp[i], high - prices[i - 1], 0)
+        return dp
+
 if __name__ == "__main__":
-    # p = [3,3,5,0,0,3,1,4]
-    p = []
-    print(Solution().maxProfit(p))
+    p = [3,3,5,0,0,3,1,4]
+    # p = []
+    print(Solution2().maxProfit(p))

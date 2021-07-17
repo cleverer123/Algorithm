@@ -1,4 +1,25 @@
-class Solution(object):
+# 递归 
+class Solution0(object):
+    def subsets(self, nums):
+        res = []
+        if not nums:
+            return [[]]
+        res = self.subsets(nums[1:])
+        return res + [[nums[0]] + s for s in res]
+
+# 回溯
+class Solution1(object):
+    def subsets(self, nums):
+        res = list()
+        self._subsets(nums, 0, list(), res)
+        return res
+
+    def _subsets(self, nums, index, path, res):
+        res.append(path)
+        for i in range(index, len(nums)):
+            self._subsets(nums, i + 1, path + [nums[i]], res)
+
+class Solution2(object):
     def subsets(self, nums):
         """
         :type nums: List[int]
@@ -25,7 +46,7 @@ class Solution(object):
 
         
 
-class Solution2:
+class Solution3:
     def subsets(self, nums):
         res = []
         all_set = 1 << len(nums)
@@ -38,7 +59,18 @@ class Solution2:
             res.append(item)
         return res
 
+# 迭代
+class Solution4(object):
+    def subsets(self, nums):
+        res = [[]]
+
+        for num in nums:
+            res += [s + [num]  for s in res]    
+               
+        return res
+
+    
 if __name__ == '__main__':
-    s = Solution2()
+    s = Solution4()
     input = [1,2,3]
     print(s.subsets(input)) 

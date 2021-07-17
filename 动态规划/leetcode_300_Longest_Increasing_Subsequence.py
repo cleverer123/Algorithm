@@ -18,6 +18,14 @@ class Solution(object):
                 LIS = dp[i]
         
         return LIS
+        # dp = [1] * len(nums)
+        
+        # for i in range(len(nums)):
+            
+        #     for j in range(i):
+        #         if nums[j] < nums[i]:
+        #             dp[i] = max(dp[j] + 1, dp[i])
+        # return dp[-1]
 
 class Solution1(object):
     def lengthOfLIS(self, nums):
@@ -94,4 +102,4 @@ class Solution3:
 
 if __name__ == "__main__":
     nums = [10,9,2,5,3,7,101,18]
-    print(Solution2().lengthOfLIS(nums))
+    print(Solution().lengthOfLIS(nums))

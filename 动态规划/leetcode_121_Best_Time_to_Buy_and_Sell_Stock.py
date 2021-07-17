@@ -18,7 +18,7 @@ class Solution(object):
         return tmp 
     
     # 动态规划2 维护 在当天卖出的最佳交易 和 到目前为止最好的交易
-    def maxProfit(self, prices):
+    def maxProfit2(self, prices):
         local = 0
         glob = 0
         for i in range(len(prices) - 1):
@@ -28,3 +28,7 @@ class Solution(object):
         return glob
 
 # https://blog.csdn.net/program_developer/article/details/83245488
+
+if __name__ == "__main__":
+    prices = [7,6,4,3,1]
+    print(Solution().maxProfit3(prices ))

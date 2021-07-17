@@ -96,7 +96,7 @@ from heapq import *
 
 
 if __name__ == '__main__':
-    S = Solution1()
+    S = Solution2()
 
     nums = [3,2,1,5,6,4]
     k = 2
