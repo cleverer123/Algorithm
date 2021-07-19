@@ -132,3 +132,9 @@
  - 思路：背包，n个物品，sum(nums)/2 容量
 
 ## LeetCode 322. Coin Change
+
+## LeetCode 377. Combination Sum IV
+
+## LeetCode 139. Word Break
+
+## LeetCode 140. Word Break II

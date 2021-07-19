@@ -69,8 +69,26 @@ class Solution4(object):
                
         return res
 
+class Solution5(object):
+    def subsets(self, nums):
+        
+        res = []
+
+        def dfs(index, path):
+            res.append(path)
+            if index > len(nums):
+                return 
+            for i in range(index, len(nums)):
+                dfs(i + 1, path + [nums[i]])                
+
+        dfs(0, [])
+        
+        return res
+
+
+
     
 if __name__ == '__main__':
-    s = Solution4()
+    s = Solution5()
     input = [1,2,3]
     print(s.subsets(input)) 

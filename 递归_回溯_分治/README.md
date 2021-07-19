@@ -19,6 +19,10 @@
  - 思路：
     - 1. 回溯 + 剪枝
     - 2. 首先对输入序列排序，以小数作为起始，依次选择后续大的数加入子集（如果数字与前一个相同，则跳过），同时target减去加入的元素。如果当前待加入元素大于target，则跳出循环（后续元素均无需试探）。
+ - 相关题：
+        - ***LeetCode 39. Combination Sum***
+        - ***LeetCode 40. Combination Sum II***
+        - ***LeetCode 216. Combination Sum III***
 
 ### 2、生成括号
  - 难度： Medium

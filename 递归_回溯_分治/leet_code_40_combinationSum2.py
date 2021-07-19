@@ -57,10 +57,27 @@ class Solution(object):
         generate(target, 0, [])    
         return res            
 
-# 采用背包
+class Solution2(object):
+    def combinationSum(self, candidates, target):
+        candidates.sort()
+        res = []
+        def dfs(index, path, target):
+            if target == 0:
+                res.append(path)
+                return 
+            if path and target < path[-1]:
+                return 
+            for i in range(index, len(candidates)):
+                if i > index and candidates[i] == candidates[i-1]:
+                    continue
+                dfs(i+1, path + [candidates[i]], target - candidates[i])
+        dfs(0, [], target)
+
+        return res
+
 
 
 if __name__ == '__main__':
     nums = [10,1,2,7,6,1,5]
     t = 8
-    print(Solution().combinationSum2(nums, t))
+    print(Solution2().combinationSum(nums, t))

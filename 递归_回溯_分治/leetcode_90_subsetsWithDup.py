@@ -1,4 +1,28 @@
+# 递归
+class Solution0(object):
+    def subsetsWithDup(self, nums):
+        res = []
+        if not nums:
+            return [[]]
+        res = self.subsetsWithDup(nums[1:])
+        return res + [[nums[0]] + s for s in res if [nums[0]] + s not in res]
+
+# 回溯
 class Solution1(object):
+    def subsetsWithDup(self, nums):
+        res = []
+        self._subsetsWithDup(nums, 0, list(), res)
+        return res
+
+    def _subsetsWithDup(self, nums, index, path, res):
+        res.append(path)
+        for i in range(index, len(nums)):
+            if index < i and nums[i] == nums[i-1]:
+                continue
+            self._subsetsWithDup(nums, i + 1, path + [nums[i]], res)
+        
+# 回溯
+class Solution3(object):
     def subsetsWithDup(self, nums):
         """
         :type nums: List[int]
@@ -26,6 +50,7 @@ class Solution1(object):
         generate(0, nums, item, res)
         return res
 
+# 深度优先
 class Solution(object):
     def subsetsWithDup(self, nums):
         """
@@ -35,8 +60,6 @@ class Solution(object):
         nums.sort()
 
         res = []
-        item = []
-
 
         def dfs(start, valuelist):
             res.append(valuelist)
@@ -54,4 +77,4 @@ class Solution(object):
 if __name__ == "__main__":
     
     nums = [1, 2, 2]
-    print(Solution().subsetsWithDup(nums))
+    print(Solution0().subsetsWithDup(nums))
