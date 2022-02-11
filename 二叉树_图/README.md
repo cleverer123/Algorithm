@@ -3,9 +3,26 @@
 ---
 
 ## 二叉树的深度遍历
-1. 前序遍历：**node**->node.left->node.right
-2. 中序遍历：node.left->**node**->node.right
-3. 后续遍历：node.left->node.right->**node**
+1. 前序遍历：**node**->node.left->node.right leetcode144
+2. 中序遍历：node.left->**node**->node.right leetcode94
+3. 后续遍历：node.left->node.right->**node** leetcode145
+
+---
+
+## 二叉搜索树
+
+### 1、二叉树的验证
+ - 难度： Medium
+ - 来源： ***LeetCode 98. Validate Binary Search Tree***
+ - 思路： 二叉搜索树的中序遍历是有序的，因此按照中序遍历，先判断左子树，记录根节点，再判断右子树
+
+### 2、Kth Smallest Element in a BST
+ - 难度： Medium
+ - 来源： ***LeetCode 230. Kth Smallest Element in a BST***
+ - 思路： 二叉搜索树的中序遍历是有序的，因此按照中序遍历，先判断左子树，记录根节点，再判断右子树
+
+
+---
 
 ### 1、路径之和
  - 难度： Medium
