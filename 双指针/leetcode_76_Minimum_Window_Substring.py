@@ -47,7 +47,7 @@ class Solution(object):
                 left += 1
         return "" if res[1] == float('inf') else s[res[0] : res[1] + 1]   
                 
-
+    
 
 
 
