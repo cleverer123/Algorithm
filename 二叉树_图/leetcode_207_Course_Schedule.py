@@ -39,7 +39,7 @@ class Solution(object):
         return True
 
 
-class Solution(object):
+class Solution2(object):
     def canFinish(self, numCourses, prerequisites):
         """
         :type numCourses: int
@@ -73,13 +73,55 @@ class Solution(object):
         
         return True
 
+# 2023-04-27
+class Solution3(object):
+    def canFinish(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        解体思路：首先遍历prerequisites得到每个课程的入度（有前驱课程<第一个元素>加1），以及每个课程的所有后继（第一个元素是第二个元素的后继），
+        通过维护一个入度为零的课程栈实现图的遍历：
+            遍历入度表，将其中为0的课程id入栈。
+            如果栈不为空，弹出栈（模拟学完该课程），这时候记录count+1，该课程的所有后继的入度-1，同时判断这些后继课程的入度是否变为0，若为零则入栈。
+        """
+
+        inDegrees = [0] * numCourses
+        next = [ [] for _ in range(numCourses) ]
+        # next = {}
+        for pres in prerequisites:
+            inDegrees[ pres[0] ] += 1 
+            next[ pres[1] ].append( pres[0] )
+            
+        
+        stack = []
+
+        for i in range(numCourses):
+            if inDegrees[i] == 0:
+                stack.append(i)
+        
+        count = 0
+
+        while len(stack):
+            i = stack.pop()
+            count += 1
+
+            for post in next[i]:
+                inDegrees[post] -= 1
+                if inDegrees[post] == 0:
+                    stack.append(post)
+        
+        return count == numCourses
 
 if __name__ == '__main__':       
     num = 3
     # l = [[1,2],[0,1],[2,0]]
     l = [[0,1], [0,2], [1,2]]
-    print(Solution().canFinish(num, l))
+    print(Solution3().canFinish(num, l))
 
 
 
 
+
+
+            
